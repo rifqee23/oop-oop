@@ -1,48 +1,40 @@
 #include <iostream>
 #include <string>
+#include "Player.hpp"
 
 using namespace std;
 
-// Deklarasi class
-
-class Player{
-    public:
-        string name;
-
-        // Contructor
-        Player(const char*); // dalam bentuk prototype
-        void display();
-        string getName();
-        void setName(const char*);
-};
-
-
 int main(int argc, char const *argv[])
 {
-    Player* playerObject = new Player("Marni");
-    playerObject->display();
+    Player player1 = Player("Naruko"); // ini adalah object di stack
+    player1.display();
 
-    cout << "get name: "<< playerObject->getName() << endl;
+    // implementasi dari getter
+    cout << player1.getName() << endl; // read 
+    // player1.name = "Luna"; // tidak bisa write
 
-    cout << "rubah nama" << endl;
-    playerObject->setName("Isabella");
-    playerObject->display();
+    // kegiatan bertarung
+    cout << "bertarung" << endl;
+    player1.addExperience(25); // setter
+    player1.display();
+    player1.addExperience(50);
+    player1.display();
+    player1.addExperience(10);
+    player1.display();
+    player1.addExperience(25);
+
+    // hasilnya
+    player1.display();
+
+    // bertarung lagi
+    cout << "bertarung" << endl;
+    player1.addExperience(25); // setter
+    player1.display();
+    player1.addExperience(50);
+    player1.display();
+    player1.addExperience(10);
+    player1.display();
+    player1.addExperience(25);
+    player1.display();
     return 0;
-}
-
-// Penjabaran method
-Player::Player(const char* name){
-    this->name = name;
-}
-
-void Player::display(){
-    cout << "Nama Player: " << this->name << endl;
-}
-
-string Player::getName(){
-    return this->name;
-}
-
-void Player::setName(const char* name){
-    this->name = name;
 }
